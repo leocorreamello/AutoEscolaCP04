@@ -2,9 +2,9 @@
 API REST para cadastro e gestao de instrutores e alunos.
 
 ## Dados
-Felipe Soares Xavier - RM 556931
-Leonardo Corrêa de Mello - RM 555573
-Pedro Visconti Guidotte - RM 556630
+Felipe Soares Xavier - RM 556931 </br>
+Leonardo Corrêa de Mello - RM 555573 </br>
+Pedro Visconti Guidotte - RM 556630 </br>
 
 ## Requisitos
 
