@@ -16,7 +16,7 @@ Pedro Visconti Guidotte - RM 556630 </br>
 ## Como executar
 
 ```powershell
-Push-Location "C:\Users\...\AutoEscolaCP04\Checkpoint03"
+Push-Location "C:\Users\...\AutoEscolaCP04\Checkpoint04"
 .\\mvnw spring-boot:run
 Pop-Location
 ```
