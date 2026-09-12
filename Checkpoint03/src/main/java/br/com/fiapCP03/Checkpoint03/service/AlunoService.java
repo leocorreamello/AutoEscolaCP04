@@ -39,12 +39,13 @@ public class AlunoService {
 
     @Transactional(readOnly = true)
     public Page<AlunoListResponse> listar(Pageable pageable) {
-        return repository.findAllByOrderByNomeAsc(pageable).map(this::toListResponse);
+        return repository.findByAtivoTrue(pageable).map(this::toListResponse);
     }
 
     @Transactional
     public AlunoListResponse atualizar(Long id, AlunoUpdateRequest request) {
         Aluno aluno = repository.findById(id)
+                .filter(Aluno::getAtivo)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Aluno nao encontrado"));
 
         aluno.setNome(request.nome());
@@ -57,9 +58,11 @@ public class AlunoService {
     @Transactional
     public void excluir(Long id) {
         Aluno aluno = repository.findById(id)
+                .filter(Aluno::getAtivo)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Aluno nao encontrado"));
 
-        repository.delete(aluno);
+        aluno.setAtivo(false);
+        repository.save(aluno);
     }
 
     private Endereco toEndereco(EnderecoRequest request) {

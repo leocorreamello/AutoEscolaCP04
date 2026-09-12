@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity
@@ -31,6 +32,9 @@ public class Aluno {
     @Embedded
     private Endereco endereco;
 
+    @Column(nullable = false)
+    private Boolean ativo;
+
     public Aluno() {
     }
 
@@ -46,6 +50,14 @@ public class Aluno {
         this.telefone = telefone;
         this.cpf = cpf;
         this.endereco = endereco;
+        this.ativo = true;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        if (ativo == null) {
+            ativo = true;
+        }
     }
 
     public Long getId() {
@@ -82,6 +94,14 @@ public class Aluno {
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
     }
 }
 

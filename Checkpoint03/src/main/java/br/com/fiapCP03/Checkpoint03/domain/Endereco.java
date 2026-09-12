@@ -2,6 +2,8 @@ package br.com.fiapCP03.Checkpoint03.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 @Embeddable
 public class Endereco {
@@ -21,6 +23,7 @@ public class Endereco {
     @Column(name = "endereco_cidade", nullable = false)
     private String cidade;
 
+    @JdbcTypeCode(SqlTypes.CHAR)
     @Column(name = "endereco_uf", nullable = false, length = 2)
     private String uf;
 
