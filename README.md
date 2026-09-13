@@ -15,13 +15,27 @@ Pedro Visconti Guidotte - RM 556630 </br>
 
 ## Como executar
 
+O Maven Wrapper precisa encontrar um JDK 25, pelo `JAVA_HOME` ou pelo `PATH`.
+
+**Windows (PowerShell)**
 ```powershell
 Push-Location "C:\Users\...\AutoEscolaCP04\Checkpoint04"
-.\\mvnw spring-boot:run
+.\mvnw spring-boot:run
 Pop-Location
 ```
 
-Para rodar os testes: `.\mvnw test`
+**macOS / Linux**
+```bash
+cd AutoEscolaCP04/Checkpoint04
+./mvnw spring-boot:run
+```
+
+No macOS, se nao houver JDK instalado, da para usar o que vem com o IntelliJ:
+```bash
+export JAVA_HOME="/Applications/IntelliJ IDEA.app/Contents/jbr/Contents/Home"
+```
+
+A API sobe em `http://localhost:8080`. Para rodar os testes: `./mvnw test` (ou `.\mvnw test` no Windows).
 
 ## Autenticacao
 
